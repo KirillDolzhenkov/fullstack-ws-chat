@@ -1,8 +1,8 @@
 import {Routes, Route} from "react-router-dom";
-import {SignIn} from "@/components/signIn/SignIn.tsx";
-import {Chat} from "../chat/Chat.tsx";
+import {Chat, SignIn} from "@/components";
 
-const AppRoutes = () => {
+
+export const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<SignIn/>}/>
@@ -13,5 +13,3 @@ const AppRoutes = () => {
 
     );
 };
-
-export default AppRoutes;

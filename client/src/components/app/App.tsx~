@@ -1,9 +1,10 @@
-import {AppRoutes} from "@/components";
+import {SignIn} from "@/components/index";
 
 function App() {
+
   return (
     <>
-      <AppRoutes/>
+      <SignIn/>
     </>
   )
 }
