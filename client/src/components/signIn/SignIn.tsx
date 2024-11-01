@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 
 const FIELDS = {
-    USER_NAME: 'username',
+    USERNAME: 'username',
     ROOM: 'room',
 };
 
@@ -34,8 +34,8 @@ const InputField = (props: InputFieldProps) => {
 
 
 export const SignIn = () => {
-    const { USER_NAME, ROOM } = FIELDS;
-    const [values, setValues] = useState({ [USER_NAME]: '', [ROOM]: '' });
+    const { USERNAME, ROOM } = FIELDS;
+    const [values, setValues] = useState({ [USERNAME]: '', [ROOM]: '' });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -53,8 +53,8 @@ export const SignIn = () => {
             <h1 className={s.heading}>Join</h1>
             <form className={s.form}>
                 <InputField
-                    name={USER_NAME}
-                    value={values[USER_NAME]}
+                    name={USERNAME}
+                    value={values[USERNAME]}
                     placeholder="Enter name"
                     onChange={handleChange}
                 />
@@ -64,7 +64,7 @@ export const SignIn = () => {
                     placeholder="Room"
                     onChange={handleChange}
                 />
-                <Link onClick={handleSubmit} className={s.group} to={`/chat?name=${values[USER_NAME]}&chat=${values[ROOM]}`}>
+                <Link onClick={handleSubmit} className={s.group} to={`/chat?name=${values[USERNAME]}&chat=${values[ROOM]}`}>
                     <button type="submit" className={s.button}>
                         Sign in
                     </button>
