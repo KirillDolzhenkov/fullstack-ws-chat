@@ -1,37 +1,12 @@
 import s from './SignIn.module.css';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+import {InputField} from "@/components";
 
 const FIELDS = {
     USERNAME: 'username',
     ROOM: 'room',
 };
-
-interface InputFieldProps {
-    name: string;
-    value: string;
-    placeholder: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const InputField = (props: InputFieldProps) => {
-    const {name, value, placeholder, onChange } = props;
-    return(
-        <div className={s.group}>
-        <input
-            type="text"
-            name={name}
-            value={value}
-            placeholder={placeholder}
-            className={s.input}
-            onChange={onChange}
-            autoComplete="off"
-            required
-        />
-    </div>
-    )
-}
-
 
 export const SignIn = () => {
     const { USERNAME, ROOM } = FIELDS;
@@ -70,6 +45,6 @@ export const SignIn = () => {
                     </button>
                 </Link>
             </form>
-        </div>
+        </div> 
     );
 };

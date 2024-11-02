@@ -1,7 +1,6 @@
 import {Routes, Route} from "react-router-dom";
 import {Chat, SignIn} from "@/components";
 
-
 export const AppRoutes = () => {
     return (
         <Routes>
@@ -10,6 +9,5 @@ export const AppRoutes = () => {
             <Route path="/chat" element={<Chat/>}/>
             <Route path="404" element={<div>404</div>}/>
         </Routes>
-
     );
 };

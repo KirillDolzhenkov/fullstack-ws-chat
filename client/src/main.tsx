@@ -1,7 +1,7 @@
-import { createRoot } from 'react-dom/client'
+import {createRoot} from 'react-dom/client'
 import './index.css'
-import {BrowserRouter} from "react-router-dom";
-import App from "@/components/app/App";
+import { BrowserRouter } from "react-router-dom";
+import {App} from "@/components";
 
 createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
