@@ -20,11 +20,11 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
 
     socket.on('join', (data) => {
-        const {name, room} = data
-        socket.join(room);
+        socket.join(data);
+        /*console.log(`User with ID: ${socket.id} joined room: ${data}`);*/
 
         socket.emit('message', {
-            data: {user: {name: 'Admin'}, message: `user ${name} has joined the room ${room}`},
+            data: {user: {name: 'Admin'}, message: 'Welcome!'},
         })
     })
 

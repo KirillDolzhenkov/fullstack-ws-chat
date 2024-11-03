@@ -39,12 +39,12 @@ export const SignIn = () => {
                     placeholder="Room"
                     onChange={handleChange}
                 />
-                <Link onClick={handleSubmit} className={s.group} to={`/chat?name=${values[USERNAME]}&chat=${values[ROOM]}`}>
+                <Link onClick={handleSubmit} className={s.group} to={`/chat?name=${values[USERNAME]}&room=${values[ROOM]}`}>
                     <button type="submit" className={s.button}>
                         Sign in
                     </button>
                 </Link>
             </form>
-        </div> 
+        </div>
     );
 };

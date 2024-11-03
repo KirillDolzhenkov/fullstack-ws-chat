@@ -16,8 +16,7 @@ export const Chat = () => {
 
         socket.emit('join', {
             name: searchParams.username,
-            room: searchParams.chat
-        });
+            room: searchParams.chat});
     }, [search]);
 
     useEffect(() => {
