@@ -1,2 +1,1 @@
-export * from './shared'
-export * from './ui'
+export {InputField} from "./inputField/inputField";

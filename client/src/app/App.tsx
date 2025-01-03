@@ -1,4 +1,5 @@
-import {AppRoutes} from "@/components/shared";
+import {AppRoutes} from "./AppRoutes";
+import './main.css'
 
 export const App = () => {
   return (
