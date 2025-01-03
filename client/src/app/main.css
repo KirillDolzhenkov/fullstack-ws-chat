@@ -54,5 +54,5 @@ li {
 .container {
   width: 1240px;
   margin: 0 auto;
-  min-height: 100hv;
+  min-height: 100vh;
 }

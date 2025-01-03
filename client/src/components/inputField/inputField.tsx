@@ -1,4 +1,4 @@
-import s from "@/pages/signInPage/SignInPage.module.css";  //TODO: add styles
+import s from "@/pages/signInPage/SignInPage.module.css";
 import {InputFieldProps} from "./inputFieldProps";
 
 export const InputField = (props: InputFieldProps) => {
