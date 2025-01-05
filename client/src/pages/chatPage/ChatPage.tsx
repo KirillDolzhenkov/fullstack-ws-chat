@@ -15,7 +15,7 @@ export const ChatPage = () => {
         setParams(searchParams);
 
         socket.emit('join', {
-            name: searchParams.username,
+            name: searchParams.name,
             room: searchParams.chat
         });
     }, [search]);
