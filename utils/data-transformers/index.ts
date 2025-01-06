@@ -1,1 +1,1 @@
-export { default as toTrimStringLowCase } from './to-trim-string-low-case';
+export { default as toNormalizeStr } from './to-normalize-str';

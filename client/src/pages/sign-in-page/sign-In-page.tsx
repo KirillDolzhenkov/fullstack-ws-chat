@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import React, {useState} from 'react';
 
-import s from './SignInPage.module.css';
+import s from './sign-In-page.styles.module.css';
 
 import {InputField} from "@/components";
 
@@ -16,12 +16,12 @@ export const SignInPage = () => {
         ROOM
     } = FIELDS;
 
-    const [values, setValues] = useState({[USERNAME]: '', [ROOM]: ''});
+    const [ values, setValues ] = useState({[USERNAME]: '', [ROOM]: ''});
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const {name, value} = e.target;
+        const { name, value } = e.target;
 
-        setValues((prevValues) => ({...prevValues, [name]: value}));
+        setValues((_prevValues) => ({..._prevValues, [name]: value}));
     };
     const handleSubmit = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         const isDisabled = Object.values(values).some((value) => !value);
