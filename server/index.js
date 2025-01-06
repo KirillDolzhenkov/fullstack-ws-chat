@@ -26,10 +26,13 @@ io.on('connection', (socket) => {
         const { name, room } = data
         socket.join(room);
 
-        const { user } = addUser({name, room});
+        const { user, isExist } = addUser({name, room});
+        const userMessage = isExist
+            ? `${user.name} connected`
+            : `user ${user.name} has joined the room ${room}`;
 
         socket.emit('message', {
-            data: {user: {name: 'Admin'}, message: `user ${user.name} has joined the room ${room}`},
+            data: {user: {name: 'Admin'}, message: userMessage},
         });
 
         socket.broadcast.to(room).emit('message', {

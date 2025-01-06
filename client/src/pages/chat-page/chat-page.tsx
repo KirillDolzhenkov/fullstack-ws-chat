@@ -71,7 +71,8 @@ export const ChatPage = () => {
     };
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (message.trim()) {
+
+        if (DV.isValid(message.trim())) {
             socket.emit('sendMessage', {
                 message,
                 params: {
@@ -79,11 +80,12 @@ export const ChatPage = () => {
                     room: params.room
                 }
             });
+
             setMessage('');
         }
     };
     const onEmojiClick = ({emoji}: EmojiClickData) => {
-        setMessage(`${message} ${emoji}`);
+        setMessage((_prevMessage) => `${_prevMessage} ${emoji}`);
     };
 
     return (

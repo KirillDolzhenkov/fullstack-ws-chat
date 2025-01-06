@@ -15,11 +15,11 @@
 }
 
 .message {
-    width: max-content;
+    /*width: max-content;*/
     display: flex;
     flex-direction: column;
     row-gap: 5px;
-    /*width: 100%;*/
+    width: 100%;
 }
 
 .text {
