@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 
 import s from './sign-In-page.styles.module.css';
 
-import {InputField} from "@/components";
+import {Button, InputField} from "@/components";
 
 const FIELDS = {
     USERNAME: 'username',
@@ -51,7 +51,15 @@ export const SignInPage = () => {
                         className={s.group}
                         to={`/chat?name=${values[USERNAME]}&chat=${values[ROOM]}`}
                     >
-                        <button type="submit" className={s.button}>Sign in</button>
+                        <div className={s.button}>
+                            <Button
+                                type="submit"
+                                variant={'primary'}
+                                fullWidth
+                            >
+                                Sign in
+                            </Button>
+                        </div>
                     </Link>
                 </form>
             </div>

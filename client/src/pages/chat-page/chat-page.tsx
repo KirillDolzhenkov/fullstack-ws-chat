@@ -6,7 +6,7 @@ import EmojiPicker, {EmojiClickData, Theme} from "emoji-picker-react";
 import { DV } from "../../../../utils";
 
 import emojiSVG from '@/assets/emoji.svg';
-import {InputField} from "@/components";
+import {Button, InputField} from "@/components";
 import {ChatPageMessages} from './components';
 
 import s from './chat-page.styles.module.css';
@@ -98,10 +98,10 @@ export const ChatPage = () => {
                     <div className={s.users}>
                         0 user in this room
                     </div>
-                    <button className={s.left} onClick={() => {
+                    <Button variant={"secondary"} onClick={() => {
                     }}>
-                        Left the room
-                    </button>
+                        Leave
+                    </Button>
                 </div>
                 <div className={s.messages}>
                     {/*todo: add id's to messages*/}
@@ -138,12 +138,13 @@ export const ChatPage = () => {
                         )}
                     </div>
                     {/*todo: add styles*/}
-                    <button
+                    <Button
+                        variant={"outlined"}
                         type="submit"
                         className={s.submit}
                     >
                         Send
-                    </button>
+                    </Button>
                 </form>
             </div>
         </div>

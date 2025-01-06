@@ -1,1 +1,2 @@
-export {InputField} from "@/components/input-field/input-field";
+export {InputField} from "./input-field/input-field";
+export {Button} from "./button/button";
