@@ -1,1 +1,1 @@
-export {ChatPageMessages} from './chat-page.messages';
+export { ChatPageMessages } from './chat-page.messages';

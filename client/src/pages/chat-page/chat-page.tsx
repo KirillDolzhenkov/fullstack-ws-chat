@@ -1,33 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { io, Socket } from "socket.io-client";
-import { useLocation } from "react-router-dom";
-import EmojiPicker, {EmojiClickData, Theme} from "emoji-picker-react";
+import * as React                           from 'react'
+import { io, Socket }                       from 'socket.io-client';
+import { useLocation }                      from 'react-router-dom';
+import EmojiPicker, {EmojiClickData, Theme} from 'emoji-picker-react';
 
-import { DV } from "../../../../utils";
+import emojiSVG                        from '@/assets/emoji.svg';
+import { Button, InputField }          from '@/components';
+import { MessageData, MessagePayload } from '@/pages/chat-page/chat-page.types';
 
-import emojiSVG from '@/assets/emoji.svg';
-import {Button, InputField} from "@/components";
-import {ChatPageMessages} from './components';
+import { DV } from '../../../utils';
 
-import s from './chat-page.styles.module.css';
-import {MessageData, MessagePayload} from "@/pages/chat-page/chat-page.types";
+import { ChatPageMessages } from './components';
+import s                    from './chat-page.styles.module.css';
 
 
 const socket: Socket = io('http://localhost:5000');
 
 export const ChatPage = () => {
     const { search } = useLocation();
-    const [ params, setParams ] = useState({name: '', room: ''});
+    const [ params, setParams ] = React.useState({name: '', room: ''});
 
-    const [ state, setState ] = useState<MessageData[]>([]);
-    const [ message, setMessage ] = useState('');
-    const [ isOpen, setIsOpen ] = useState(false);
+    const [ state, setState ] = React.useState<MessageData[]>([]);
+    const [ message, setMessage ] = React.useState('');
+    const [ isOpen, setIsOpen ] = React.useState(false);
 
-    useEffect(() => {
+    React.useEffect(() => {
         const searchParams = Object.fromEntries(new URLSearchParams(search));
 
         if (!DV.isValid(searchParams.name) || !DV.isValid(searchParams.chat)) {
             console.error('Name or chat room is missing in URL parameters');
+
             return;
         }
 
@@ -47,7 +48,7 @@ export const ChatPage = () => {
         };
     }, [search]);
 
-    useEffect(() => {
+    React.useEffect(() => {
         /*todo: refactor types*/
         const handleMessage = ({ data }: MessagePayload) => {
             const { message, user } = data;
@@ -64,13 +65,13 @@ export const ChatPage = () => {
         };
     }, []);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = e.target;
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = event.target;
 
         setMessage(value);
     };
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
 
         if (DV.isValid(message.trim())) {
             socket.emit('sendMessage', {
@@ -98,20 +99,28 @@ export const ChatPage = () => {
                     <div className={s.users}>
                         0 user in this room
                     </div>
-                    <Button variant={"secondary"} onClick={() => {
-                    }}>
+                    <Button
+                        variant={'secondary'}
+                        onClick={() => {}}
+                    >
                         Leave
                     </Button>
                 </div>
                 <div className={s.messages}>
                     {/*todo: add id's to messages*/}
                     {DV.isValidArray(state) && (
-                        <ChatPageMessages messages={state} name={params.name}/>
+                        <ChatPageMessages
+                            messages={state}
+                            name={params.name}
+                        />
                     )}
                 </div>
                 <form className={s.form} onSubmit={handleSubmit}>
                     <div className={s.emojies}>
-                        <EmojiPicker onEmojiClick={onEmojiClick} reactionsDefaultOpen={true}/>
+                        <EmojiPicker
+                            onEmojiClick={onEmojiClick}
+                            reactionsDefaultOpen={true}
+                        />
                     </div>
                     <div className={s.input}>
                         <InputField
@@ -124,8 +133,10 @@ export const ChatPage = () => {
                     <div className={s.emoji}>
                         <img
                             src={emojiSVG}
-                            alt='emoji'
-                            onClick={() => {setIsOpen(!isOpen)}}
+                            alt={'emoji'}
+                            onClick={() => {
+                                setIsOpen(!isOpen);
+                            }}
                         />
 
                         {isOpen && (
@@ -139,8 +150,8 @@ export const ChatPage = () => {
                     </div>
                     {/*todo: add styles*/}
                     <Button
-                        variant={"outlined"}
-                        type="submit"
+                        variant={'outlined'}
+                        type={'submit'}
                         className={s.submit}
                     >
                         Send

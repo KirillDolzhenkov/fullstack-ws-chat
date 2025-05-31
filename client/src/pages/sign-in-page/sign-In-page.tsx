@@ -1,9 +1,10 @@
-import {Link} from 'react-router-dom';
-import React, {useState} from 'react';
+import * as React from 'react';
+import { Link }   from 'react-router-dom';
+
+
+import { Button, InputField } from '@/components';
 
 import s from './sign-In-page.styles.module.css';
-
-import {Button, InputField} from "@/components";
 
 const FIELDS = {
     USERNAME: 'username',
@@ -16,17 +17,24 @@ export const SignInPage = () => {
         ROOM
     } = FIELDS;
 
-    const [ values, setValues ] = useState({[USERNAME]: '', [ROOM]: ''});
+    const [ values, setValues ] = React.useState({
+        [USERNAME]: '',
+        [ROOM]: ''
+    });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
 
         setValues((_prevValues) => ({..._prevValues, [name]: value}));
     };
-    const handleSubmit = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        const isDisabled = Object.values(values).some((value) => !value);
+    const handleSubmit = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        const isDisabled = Object
+            .values(values)
+            .some((value) => !value);
 
-        if (isDisabled) e.preventDefault();
+        if (isDisabled) {
+            event.preventDefault();
+        }
     };
 
     return (
@@ -37,13 +45,13 @@ export const SignInPage = () => {
                     <InputField
                         name={USERNAME}
                         value={values[USERNAME]}
-                        placeholder="Enter name"
+                        placeholder={'Enter name'}
                         onChange={handleChange}
                     />
                     <InputField
                         name={ROOM}
                         value={values[ROOM]}
-                        placeholder="Room"
+                        placeholder={'Room'}
                         onChange={handleChange}
                     />
                     <Link
@@ -53,7 +61,7 @@ export const SignInPage = () => {
                     >
                         <div className={s.button}>
                             <Button
-                                type="submit"
+                                type={'submit'}
                                 variant={'primary'}
                                 fullWidth
                             >

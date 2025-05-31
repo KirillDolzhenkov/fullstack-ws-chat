@@ -1,10 +1,9 @@
-import { DT } from "../../../../../../utils";
+import { DT } from "../../../../../utils";
 
-import {ChatPageMessagesProps} from "./chat-page.messages.props";
+import { ChatPageMessagesTypes } from './chat-page.messages.types';
+import s                         from './chat-page.messages.styles.module.css';
 
-import s from './chat-page.messages.styles.module.css';
-
-export const ChatPageMessages = (props: ChatPageMessagesProps) => {
+export const ChatPageMessages = (props: ChatPageMessagesTypes) => {
     const { messages, name } = props;
 
     return (
@@ -16,9 +15,11 @@ export const ChatPageMessages = (props: ChatPageMessagesProps) => {
                     const className = isMe ? s.me : s.user;
 
                     return (
-                        <div key={index} className={`${s.message} ${className}`}>
+                        <div
+                            key={index}
+                            className={`${s.message} ${className}`}
+                        >
                             <span className={s.user}>{user.name}</span>
-
                             <div className={s.text}>{message}</div>
                         </div>
                     );

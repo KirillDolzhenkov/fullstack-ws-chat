@@ -1,5 +1,5 @@
 /*const { DT } = require('../utils')*/ /*todo: fix the validator*/
-const  { toNormalizeStr } = require('./utils')
+const  { toNormalizeStr } = require('./utils/utils')
 
 let usersData = [];
 
